@@ -7,5 +7,6 @@ class AvionAllie : public Avion {
 public:
 	AvionAllie(int a, int b, int c, int d, int e, int f) :Avion(a, b, c, d, e, f) {}
 	int getTeam() { return 1; }
-	void decisionDeplacement(Carte carte) {}
+	void decisionDeplacement(Carte* carte, int o[3]) {}
+	void appliquerDeplacement(int o[3]) {}
 };
