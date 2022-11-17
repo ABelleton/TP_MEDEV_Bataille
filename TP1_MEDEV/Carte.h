@@ -16,4 +16,5 @@ private:
 public:
 	Carte();
 	void tour();
+	vector<Avion*> getAvions() { return avions; };
 };

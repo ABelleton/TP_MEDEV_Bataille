@@ -19,17 +19,17 @@ void Carte::tour() {
 
 	// Choix des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->decisionDeplacement;
+		(avions[i])->decisionDeplacement(avions);
 	};
 
 	// Application des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->applicationDeplacement;
+		(avions[i])->applicationDeplacement(avions);
 	};
 
 	// Tirs
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->tir;
+		(avions[i])->tir(avions);
 	}
 
 	// Détection des collisions
@@ -38,7 +38,7 @@ void Carte::tour() {
 		j = i + 1;
 		while (j < avions.size()) {
 			if ((avions[i]->getX() == avions[j]->getX()) && (avions[i]->getY() == avions[j]->getY()) && (avions[i]->getZ() == avions[j]->getZ())) {
-				avions.erase(i);
+				avions.erase(int(i));
 				avions.erase(j - 1);
 				i = i - 2;
 				j = j - 2;
@@ -50,7 +50,7 @@ void Carte::tour() {
 	// Suppression des morts ce tour
 	int i = 0;
 	while (i<(avions.size())) {
-		if (avions[i]->isDead) {
+		if (avions[i]->getIsDead()) {
 			avions.erase(i);
 			i--;
 		}
@@ -59,19 +59,19 @@ void Carte::tour() {
 
 	// Gestion de la fin de partie ou du nouveau tour
 	if (avions.size() == 1) {
-		cout << "Fin de partie !";
+		cout << "Fin de partie ! Victoire de l'équipe " << (avions[0])->getTeam();;
 	}
 	else {
 		bool fin = true;
 		for (int i = 1; i < avions.size(); i++) {
-			if (avions[i]->getTeam == avions[0].getTeam) {
+			if ((avions[i])->getTeam() == (avions[0])->getTeam()) {
 				fin = false;
-				cout << "Fin de partie !";
+				cout << "Fin de partie ! Victoire de l'équipe " << (avions[0])->getTeam();;
 			}
 		}
 		if (!fin) {
 			tours++;
-			avions.tour();
+			jouer();
 		}
 	}
 
