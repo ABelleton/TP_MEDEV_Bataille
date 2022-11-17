@@ -64,8 +64,35 @@ void AvionAllie::decisionDeplacement(Carte* carte, int o[3]) {
 				o[1] = getYO();
 				if ((getZO() == 1) || (getZO() == -1)) {
 					o[2] = 0;
+					if ((getXO() == 1) || (getXO() == -1)) {
+						o[0] = 0;
+					}
+					else { o[0] = 1; }
 				}
-				else { o[2] = 1; }
+				else { 
+					if ((getXO() == 1) || (getXO() == -1)) {
+						o[0] = 0;
+					}
+					else { o[0] = 1; }
+					o[2] = 1; }
+			}
+			if ((getXO() == (-1) * getAvions()[i].getXO()) && (getYO() == (-1)*getAvions()[i].getYO()) && (getZO() == (-1) * getAvions()[i].getZO())) {
+				o[0] = getXO();
+				o[1] = getYO();
+				if ((getZO() == 1) || (getZO() == -1)) {
+					o[2] = 0;
+					if ((getXO() == 1) || (getXO() == -1)) {
+						o[0] = 0;
+					}
+					else { o[0] = 1; }
+				}
+				else {
+					if ((getXO() == 1) || (getXO() == -1)) {
+						o[0] = 0;
+					}
+					else { o[0] = 1; }
+					o[2] = 1;
+				}
 			}
 		}
 	}
