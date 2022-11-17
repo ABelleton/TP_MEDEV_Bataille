@@ -1,6 +1,6 @@
 #include "AvionEnnemi.h" 
 
-void AvionEnnemi::decisionDeplacement(const Carte& c, int[3] &o){
+void AvionEnnemi::decisionDeplacement(const Carte& c, int[3] o){
 	int[3] positionV;
 	double distV=10000.0;
 	double distA = 0.0;
@@ -15,7 +15,45 @@ void AvionEnnemi::decisionDeplacement(const Carte& c, int[3] &o){
 			}
 		}
 	}
-	positionV-={this->getX(),this->getY(),this->getZ()}
+	o= { this->getXO(), this->getYO(), this->getZO() };
+	positionV -= {this->getX(), this->getY(), this->getZ()};
+	bool at = false;
+	if (!at && positionV[0] > 0 && o[0] <= 0) {
+		o[0]++;
+		at = true;
+	}
+	if (!at && positionV[0] == 0 && o[0] != 0) {
+		o[0]=0;
+		at = true;
+	}
+	if (!at && positionV[0] < 0 && o[0] >= 0) {
+		o[0]--;
+		at = true;
+	}
+	if (!at && positionV[1] > 0 && o[1] <= 0) {
+		o[1]++;
+		at = true;
+	}
+	if (!at && positionV[1] == 0 && o[1] != 0) {
+		o[1] = 0;
+		at = true;
+	}
+	if (!at && positionV[1] < 0 && o[1] >= 0) {
+		o[1]--;
+		at = true;
+	}
+	if (!at && positionV[2] > 0 && o[2] <= 0) {
+		o[2]++;
+		at = true;
+	}
+	if (!at && positionV[2] == 0 && o[2] != 0) {
+		o[2] = 0;
+		at = true;
+	}
+	if (!at && positionV[2] < 0 && o[2] >= 0) {
+		o[2]--;
+		at = true;
+	}
 }
 
 void AvionEnnemi::appliquerDeplacement(int[3] o) {
