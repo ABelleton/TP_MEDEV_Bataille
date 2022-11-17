@@ -1,6 +1,7 @@
 #pragma once 
 #include<iostream>
 #include<vector>
+#include"Carte.h"
 using namespace std;
 
 class Avion {
@@ -36,7 +37,12 @@ class Avion {
         
         //Constructeurs
 
-        Avion(){};
+        Avion(int x, int y, int z, int xo , int yo, int zo);
+
+        //Methodes 
+        void tir (Carte carte);
+        virtual void deplacement(Carte c){};
+        virtual int getTeam(){};
 
 
 
