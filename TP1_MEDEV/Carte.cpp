@@ -17,21 +17,22 @@ Carte::Carte() {
 
 void Carte::tour() {
 
-	vector<int> futurs_deplacement = {}
+	vector<int[3]> futurs_deplacement = {};
 	// Choix des déplacements
 	for (int i = 0; i < avions.size(); i++) {
+		int deplacement[3];
 		(avions[i])->decisionDeplacement(this, deplacement);
-		futurs - deplacement.push_back(deplacement);
+		futurs_deplacement.push_back(deplacement);
 	};
 
 	// Application des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->applicationDeplacement(futurs_deplacement[i]);
+		(avions[i])->appliqueDeplacement(futurs_deplacement[i]);
 	};
 
 	// Tirs
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->tir(this);
+		(avions[i])->tir(*this);
 	}
 
 	// Détection des collisions
