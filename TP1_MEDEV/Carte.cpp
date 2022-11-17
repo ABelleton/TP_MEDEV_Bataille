@@ -12,25 +12,39 @@ Carte::Carte() {
 	carte.push_back(avion);
 	avion = new AvionEnnemi(13, 8, 13, -1, 0, 0 );
 	carte.push_back(avion);
-	delete(avion);
+	delete avion;
 }
 
 void Carte::tour() {
-	for (int i = 0; i < carte.size(); i++) {
-		(carte[i])->deplacement;
+	for (int i = 0; i < avions.size(); i++) {
+		(avions[i])->deplacement;
 	};
-	for (int i = 0; i < carte.size(); i++) {
-		(carte[i])->tir;
+	for (int i = 0; i < avions.size(); i++) {
+		(avions[i])->tir;
 	}
-	i = 0;
-	while (i<carte.size()) {
-		if (carte[i]->isDead) {
-			carte.erase(i);
+	int i = 0;
+	while (i<(avions.size())) {
+		if (avions[i]->isDead) {
+			avions.erase(i);
 			i--;
 		}
-		i++
+		i++;
 	}
-	if (carte.size() == 1) {
-		cout << "Fin de partie ! Victoire de l'équipe " <<  
+	if (avions.size() == 1) {
+		cout << "Fin de partie !";
 	}
+	else {
+		bool fin = true;
+		for (int i = 1; i < avions.size(); i++) {
+			if (avions[i]->getTeam == avions[0].getTeam) {
+				fin = false;
+				cout << "Fin de partie !";
+			}
+		}
+		if (!fin) {
+			tours++;
+			avions.tour();
+		}
+	}
+
 }
