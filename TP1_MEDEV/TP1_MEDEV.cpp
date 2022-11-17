@@ -48,6 +48,9 @@ using namespace std;
 //Brouillard 
 #include <osg/Fog>
 
+//Animations
+#include <osg/AnimationPath>
+
 //Fonction affichant les tirs
 void Tir(osg::Vec3 position_avion, osg::Vec3 position_detruite, osg::Group* root) // animation of the bullet coming from avion1, avion destructs
 {
@@ -84,6 +87,24 @@ void Tir(osg::Vec3 position_avion, osg::Vec3 position_detruite, osg::Group* root
 	root->addChild(MatTransBullet);
 
 }
+
+//Fonction animation
+void deplacement(osg::ref_ptr<osg::PositionAttitudeTransform> planePAT, int v, int w) {
+	osg::ref_ptr<osg::AnimationPath> aPath(new osg::AnimationPath);
+	aPath->setLoopMode(osg::AnimationPath::NO_LOOPING);
+
+	osg::AnimationPath::ControlPoint c0(osg::Vec3(0, 0, 0));
+	osg::AnimationPath::ControlPoint c1(osg::Vec3(10, v * 10, w * 10), osg::Quat(3.14 / 4, osg::Vec3f(0.0f, -w, 0.0f)) * osg::Quat(3.14 / 4, osg::Vec3f(0.0f, 0.0f, v)));
+
+	aPath->insert(0.0f, c0);
+	aPath->insert(1.0f, c1);
+
+
+	osg::ref_ptr<osg::AnimationPathCallback> aCallBack(new osg::AnimationPathCallback(aPath.get()));
+	planePAT->setUpdateCallback(aCallBack.get());
+}
+
+
 // destruction de l'objet qui est mort 
 void Destruction(osg::Vec3 position_detruite, osg::ref_ptr<osg::PositionAttitudeTransform> PAT, osg::Group* root) {
 	root->removeChild(PAT);
@@ -242,7 +263,7 @@ int main()
 
 	/* SCENE GRAPH*/
 
-		// Add the shape drawable to the geode
+	// Add the shape drawable to the geode
 	myshapegeode->addDrawable(boxdrawable.get());
 
 	// Add the geode to the scene graph root (Group)
