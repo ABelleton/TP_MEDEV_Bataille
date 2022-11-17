@@ -21,15 +21,17 @@ void Avion::tir (Carte carte){
         cooldown = false;
     }
     else{
-        bool out = true;
-        int posVerif=coordonees;
-        while(posVerif[0]<14 && posVerif[1]<14 && posVerif[2]<14 && posVerif[0]>=0 && posVerif[1]>=0 && posVerif[2]>=0 && out){
-            posVerif+=orientation;
-            vector<Avion*> avions = carte->getAvions ; 
-            for(int i=0; i<avions.size(); i++){
+        bool out = true;//verificateur de sortie de boucle
+        int* posVerif=coordonees;//Le vecteur position qui parcourt la ligne de visée
+        while(posVerif[0]<14 && posVerif[1]<14 && posVerif[2]<14 && posVerif[0]>=0 && posVerif[1]>=0 && posVerif[2]>=0 && out){//On parcourt la ligne de visée
+            posVerif[0]+=orientation[0];
+            posVerif[1]+=orientation[1];
+            posVerif[2]+=orientation[2];
+            vector<Avion*> avions = carte.getAvions() ; 
+            for(int i=0; i<avions.size(); i++){//Pour chaque avion, on vérifie s'il est à la position qu'on est en train de vérifier
                 if(orientation[1] == 0 ){
-                        if (orientation == {1,0,0} ){
-                            if ( (avions[i]->coordonees == posVerif||(avions[i]->coordonees[1]==posVerif[1]+1&&avions[i]->coordonees[2]==posVerif[2])||(avions[i]->coordonees[1]==posVerif[1]&&avions[i]->coordonees[2]==posVerif[2]+1)||(avions[i]->coordonees[1]==posVerif[1]-1&&avions[i]->coordonees[2]==posVerif[2])||(avions[i]->coordonees[1]==posVerif[1]&&avions[i]->coordonees[2]==posVerif[2]-1)) && this->getTeam() != avions[i]->getTeam()) {
+                        if (orientation[0] ==1 && orientation[1] == 0 && orientation[2] ==0  ){
+                            if ( (avions[i]->coordonees == posVerif||(avions[i]->coordonees[1]==posVerif[1]+1&&avions[i]->coordonees[2]==posVerif[2])||(avions[i]->coordonees[1]==posVerif[1]&&avions[i]->coordonees[2]==posVerif[2]+1)||(avions[i]->coordonees[1]==posVerif[1]-1&&avions[i]->coordonees[2]==posVerif[2])||(avions[i]->coordonees[1]==posVerif[1]&&avions[i]->coordonees[2]==posVerif[2]-1)) && this->getTeam() != avions[i]->getTeam()) {//On vérifie chaque position autour de posVerif, cela permet le canon large
                                 avions[i]->setIsDead(true);
                                 out = false;
                                 break;
