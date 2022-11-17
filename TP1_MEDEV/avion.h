@@ -8,8 +8,8 @@ class Avion {
     private :
         int coordonees[3];
         int orientation[3];
-        bool isDead;
-        bool cooldown;
+        bool isDead;//vérifie si l'avion est mort (avion mort : isDead=true)
+        bool cooldown;//avion déchargé : cooldown=true
     public:
         int getX(){return coordonees[0];};
         int getY(){return coordonees[1];};
@@ -42,7 +42,7 @@ class Avion {
         //Methodes 
         void tir (Carte carte);
         virtual void decisionDeplacement(Carte* c, int ref[3]) = 0;
-        virtual void appliqueDeplacement(int i[3]) = 0;
+        virtual void appliquerDeplacement(int i[3]) = 0;
         virtual int getTeam() = 0;
 
 
