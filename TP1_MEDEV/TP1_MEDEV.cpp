@@ -56,7 +56,7 @@ void Tir(osg::Vec3 position_avion, osg::Vec3 position_detruite, osg::Group* root
 {
 	/*CREATEBULLET*/
 	osg::ref_ptr<osg::Geode> bullet(new osg::Geode);
-	osg::ref_ptr<osg::Sphere> myBullet(new osg::Sphere(position_avion, 1));
+	osg::ref_ptr<osg::Sphere> myBullet(new osg::Sphere(position_avion, 0.5));
 	osg::ref_ptr<osg::ShapeDrawable> Spheredrawable(new osg::ShapeDrawable(myBullet.get()));
 	bullet->addChild(Spheredrawable);
 
@@ -136,7 +136,7 @@ int main()
 		osg::MatrixTransform);
 	// Scale matrix
 	osg::Matrix ScaleMatrix;
-	ScaleMatrix.makeScale(osg::Vec3f(0.01, 0.01, 0.01));
+	ScaleMatrix.makeScale(osg::Vec3f(0.3, 0.3, 0.3));
 	//Set transformation node parameters
 	ScaleMATplane->addChild(plane);
 	ScaleMATplane->setMatrix(ScaleMatrix);
@@ -147,14 +147,14 @@ int main()
 		osg::PositionAttitudeTransform);
 	//Set the transformation parameters
 	planePat1->setPosition(osg::Vec3f(0, 5, 0));
-	planePat1->addChild(plane.get());
+	planePat1->addChild(ScaleMATplane.get());
 	//Create the translation transformation for plane2
 	osg::ref_ptr<osg::PositionAttitudeTransform> planePat2(new
 		osg::PositionAttitudeTransform);
 
 	//Set the transformation parameters
 	planePat2->setPosition(osg::Vec3f(0, 8, 0));
-	planePat2->addChild(plane.get());
+	planePat2->addChild(ScaleMATplane.get());
 
 	/* POSITION OF THE ENEMY'S PLANE*/
 	//Create the translation transformation for plane3
@@ -162,13 +162,13 @@ int main()
 		osg::PositionAttitudeTransform);
 	//Set the transformation parameters
 	planePat3->setPosition(osg::Vec3f(13, 5, 13));
-	planePat3->addChild(plane.get());
+	planePat3->addChild(ScaleMATplane.get());
 	//Create the translation transformation for plane4
 	osg::ref_ptr<osg::PositionAttitudeTransform> planePat4(new
 		osg::PositionAttitudeTransform);
 	//Set the transformation parameters
 	planePat4->setPosition(osg::Vec3f(13, 8, 13));
-	planePat4->addChild(plane.get());
+	planePat4->addChild(ScaleMATplane.get());
 	//Create the transformation node
 	// arretes x
 	osg::ref_ptr<osg::PositionAttitudeTransform> objectPat1(new osg::PositionAttitudeTransform);
@@ -279,7 +279,7 @@ int main()
 	root->addChild(planePat3);
 	root->addChild(planePat4);
 
-
+	Tir(osg::Vec3(0, 5, 0), osg::Vec3(13, 5, 13), root);
 
 
 	// Set the scene data
