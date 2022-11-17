@@ -27,7 +27,7 @@ void Carte::tour() {
 
 	// Application des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->appliqueDeplacement(futurs_deplacement[i]);
+		(avions[i])->appliquerDeplacement(futurs_deplacement[i]);
 	};
 
 	// Tirs
