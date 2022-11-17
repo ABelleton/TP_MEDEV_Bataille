@@ -1,4 +1,4 @@
-#include "Avion.h"
+#include "avion.h"
 
 Avion :: Avion(int x, int y, int z, int xo , int yo, int zo) {
    
@@ -17,6 +17,11 @@ Avion :: Avion(int x, int y, int z, int xo , int yo, int zo) {
 
 
 void Avion::tir (Carte carte){
-    
+    if(cooldown){
+        cooldown = false;
+    }
+    else{
+        
+    }
 
 };
