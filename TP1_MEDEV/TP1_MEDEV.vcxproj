@@ -144,6 +144,12 @@
   <ItemGroup>
     <ClCompile Include="TP1_MEDEV.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\OSGtp1\spaceship.osgt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\OSGtp1\texture_bomb.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

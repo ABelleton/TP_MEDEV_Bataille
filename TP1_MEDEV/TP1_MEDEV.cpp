@@ -48,6 +48,46 @@ using namespace std;
 //Brouillard 
 #include <osg/Fog>
 
+//Fonction affichant les tirs
+void Tir(osg::Vec3 position_avion, osg::Vec3 position_detruite, osg::Group* root) // animation of the bullet coming from avion1, avion destructs
+{
+	/*CREATEBULLET*/
+	osg::ref_ptr<osg::Geode> bullet(new osg::Geode);
+	osg::ref_ptr<osg::Sphere> myBullet(new osg::Sphere(position_avion, 1));
+	osg::ref_ptr<osg::ShapeDrawable> Spheredrawable(new osg::ShapeDrawable(myBullet.get()));
+	bullet->addChild(Spheredrawable);
+
+	/*TEXTURE*/
+		////Getting the state set of the geode
+	osg::ref_ptr<osg::StateSet> bulletTextureNodeStateSet(
+		bullet->getOrCreateStateSet());
+	//Loading texture image object
+	osg::ref_ptr<osg::Image> bulletimage(osgDB::readImageFile("texture_bomb.png"));
+	//Bind the image to a 2D texture object
+	osg::ref_ptr<osg::Texture2D> bulletTex(new osg::Texture2D(bulletimage.get()));
+	bulletTex->setImage(bulletimage);
+	//Applying texture on the object
+	bulletTextureNodeStateSet->setTextureAttributeAndModes(0, bulletTex);
+
+	/*Animation*/
+	osg::ref_ptr<osg::AnimationPath> animationBullet(new osg::AnimationPath);
+	animationBullet->setLoopMode(osg::AnimationPath::NO_LOOPING);
+	// Control points 
+	osg::AnimationPath::ControlPoint a(position_avion, osg::Quat(0, osg::Vec3f{ 0,0,1 }));
+	osg::AnimationPath::ControlPoint b(position_detruite, osg::Quat(3.14, osg::Vec3f{ 0,0,1 }));
+	animationBullet->insert(0.0f, a);
+	animationBullet->insert(1.0f, b);
+	osg::MatrixTransform* MatTransBullet = new osg::MatrixTransform;
+	MatTransBullet->addChild(bullet);
+	osg::ref_ptr<osg::AnimationPathCallback> BulletCallback = new osg::AnimationPathCallback(animationBullet.get());
+	MatTransBullet->setUpdateCallback(BulletCallback.get());
+	root->addChild(MatTransBullet);
+
+}
+// destruction de l'objet qui est mort 
+void Destruction(osg::Vec3 position_detruite, osg::ref_ptr<osg::PositionAttitudeTransform> PAT, osg::Group* root) {
+	root->removeChild(PAT);
+}
 
 int main()
 {
@@ -65,9 +105,49 @@ int main()
 	osg::ref_ptr<osg::Box> myBox(new osg::Box(osg::Vec3f(0, 0, 0), 13.25, 0.25, 0.25));
 	//ShapeDrawable
 	osg::ref_ptr<osg::ShapeDrawable> boxdrawable(new osg::ShapeDrawable(myBox.get()));
-
+	//The geode containing: plane
+	osg::ref_ptr<osg::Node> plane(osgDB::readNodeFile("spaceship.osgt"));
+	//The geode containing texture
+	osg::ref_ptr<osg::Geode> texture_plane(new osg::Geode);
+	/* SCALE */
+			//Create scale transformation for plane
+	osg::ref_ptr<osg::MatrixTransform> ScaleMATplane(new
+		osg::MatrixTransform);
+	// Scale matrix
+	osg::Matrix ScaleMatrix;
+	ScaleMatrix.makeScale(osg::Vec3f(0.01, 0.01, 0.01));
+	//Set transformation node parameters
+	ScaleMATplane->addChild(plane);
+	ScaleMATplane->setMatrix(ScaleMatrix);
 	/* Positionnement */
+/* POSITION OF OUR PLANE*/
+	//Create the translation transformation for plane1
+	osg::ref_ptr<osg::PositionAttitudeTransform> planePat1(new
+		osg::PositionAttitudeTransform);
+	//Set the transformation parameters
+	planePat1->setPosition(osg::Vec3f(0, 5, 0));
+	planePat1->addChild(plane.get());
+	//Create the translation transformation for plane2
+	osg::ref_ptr<osg::PositionAttitudeTransform> planePat2(new
+		osg::PositionAttitudeTransform);
 
+	//Set the transformation parameters
+	planePat2->setPosition(osg::Vec3f(0, 8, 0));
+	planePat2->addChild(plane.get());
+
+	/* POSITION OF THE ENEMY'S PLANE*/
+	//Create the translation transformation for plane3
+	osg::ref_ptr<osg::PositionAttitudeTransform> planePat3(new
+		osg::PositionAttitudeTransform);
+	//Set the transformation parameters
+	planePat3->setPosition(osg::Vec3f(13, 5, 13));
+	planePat3->addChild(plane.get());
+	//Create the translation transformation for plane4
+	osg::ref_ptr<osg::PositionAttitudeTransform> planePat4(new
+		osg::PositionAttitudeTransform);
+	//Set the transformation parameters
+	planePat4->setPosition(osg::Vec3f(13, 8, 13));
+	planePat4->addChild(plane.get());
 	//Create the transformation node
 	// arretes x
 	osg::ref_ptr<osg::PositionAttitudeTransform> objectPat1(new osg::PositionAttitudeTransform);
@@ -128,6 +208,12 @@ int main()
 	RotationY->addChild(objectPat6);
 	RotationY->addChild(objectPat7);
 	RotationY->addChild(objectPat8);
+
+	// add the planes to the root 
+	root->addChild(planePat1);
+	root->addChild(planePat2);
+	root->addChild(planePat3);
+	root->addChild(planePat4);
 	// arretes selon z
 	osg::MatrixTransform* RotationZ = new osg::MatrixTransform;
 	const osg::Vec3d axisZ(0, 0, 1);
@@ -154,7 +240,6 @@ int main()
 	vector<osg::ref_ptr<osg::PositionAttitudeTransform>> VectPAT[12];
 
 
-
 	/* SCENE GRAPH*/
 
 		// Add the shape drawable to the geode
@@ -167,6 +252,11 @@ int main()
 	root->addChild(objectPat4.get());
 	root->addChild(RotationY);
 	root->addChild(RotationZ);
+	// add to the root 
+	root->addChild(planePat1);
+	root->addChild(planePat2);
+	root->addChild(planePat3);
+	root->addChild(planePat4);
 
 
 

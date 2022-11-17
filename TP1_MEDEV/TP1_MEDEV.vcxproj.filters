@@ -19,4 +19,14 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\OSGtp1\spaceship.osgt">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\OSGtp1\texture_bomb.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
