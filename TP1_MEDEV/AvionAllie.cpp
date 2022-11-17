@@ -58,8 +58,8 @@ void AvionAllie::decisionDeplacement(Carte* carte, int o[3]) {
 	}
 
 	for (int i = 0; i < carte->getAvions().size(); i++) {
-		if (getTeam() != getAvions()[i].getTeam()) {
-			if ((getXO() == getAvions()[i].getXO()) && (getYO() == getAvions()[i].getYO()) && (getZO() == getAvions()[i].getZO())) {
+		if (getTeam() != carte->getAvions()[i]->getTeam()) {
+			if ((getXO() == carte->getAvions()[i]->getXO()) && (getYO() == carte->getAvions()[i]->getYO()) && (getZO() == carte->getAvions()[i]->getZO())) {
 				o[0] = getXO();
 				o[1] = getYO();
 				if ((getZO() == 1) || (getZO() == -1)) {
@@ -76,7 +76,7 @@ void AvionAllie::decisionDeplacement(Carte* carte, int o[3]) {
 					else { o[0] = 1; }
 					o[2] = 1; }
 			}
-			if ((getXO() == (-1) * getAvions()[i].getXO()) && (getYO() == (-1)*getAvions()[i].getYO()) && (getZO() == (-1) * getAvions()[i].getZO())) {
+			if ((getXO() == (-1) * carte->getAvions()[i]->getXO()) && (getYO() == (-1)* carte->getAvions()[i]->getYO()) && (getZO() == (-1) * carte->getAvions()[i]->getZO())) {
 				o[0] = getXO();
 				o[1] = getYO();
 				if ((getZO() == 1) || (getZO() == -1)) {
