@@ -41,8 +41,9 @@ class Avion {
 
         //Methodes 
         void tir (Carte carte);
-        virtual void deplacement(Carte c){};
-        virtual int getTeam(){};
+        virtual void decisionDeplacement(Carte c, int ref[3]){} = 0;
+        virtual void appliqueDeplacement(int i[3]){} = 0;
+        virtual int getTeam(){} =0;
 
 
 
