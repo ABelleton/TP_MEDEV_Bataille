@@ -9,8 +9,10 @@
 using namespace std;
 
 class Carte {
+private:
 	vector<Avion*> avions;
 	int tours;
+
 public:
 	Carte();
 	void tour();
