@@ -59,14 +59,14 @@ void Carte::tour() {
 
 	// Gestion de la fin de partie ou du nouveau tour
 	if (avions.size() == 1) {
-		cout << "Fin de partie !";
+		cout << "Fin de partie ! Victoire de l'équipe " << (avions[0])->getTeam();;
 	}
 	else {
 		bool fin = true;
 		for (int i = 1; i < avions.size(); i++) {
 			if (avions[i]->getTeam == avions[0].getTeam) {
 				fin = false;
-				cout << "Fin de partie !";
+				cout << "Fin de partie ! Victoire de l'équipe " << (avions[0])->getTeam();;
 			}
 		}
 		if (!fin) {
