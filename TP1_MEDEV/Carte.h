@@ -16,4 +16,4 @@ private:
 public:
 	Carte();
 	void tour();
-}
+};
