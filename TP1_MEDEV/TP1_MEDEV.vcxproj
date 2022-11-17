@@ -143,6 +143,8 @@
     <ClCompile Include="TP1_MEDEV.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="avion.h" />
+    <ClInclude Include="AvionEnnemi.h" />
     <ClInclude Include="Carte.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
