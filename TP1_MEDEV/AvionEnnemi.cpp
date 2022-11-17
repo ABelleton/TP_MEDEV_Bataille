@@ -1,3 +1,10 @@
 #include "AvionEnnemi.h" 
 
-void avionEnnemi::deplacement(carte){}
+void AvionEnnemi::deplacement(carte){
+
+
+
+
+
+
+}
