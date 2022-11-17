@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Avion.cpp" />
+    <ClCompile Include="AvionAllie.cpp" />
+    <ClCompile Include="AvionEnnemi.cpp" />
     <ClCompile Include="Carte.cpp" />
     <ClCompile Include="TP1_MEDEV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="avion.h" />
+    <ClInclude Include="AvionAllie.h" />
     <ClInclude Include="AvionEnnemi.h" />
     <ClInclude Include="Carte.h" />
   </ItemGroup>
