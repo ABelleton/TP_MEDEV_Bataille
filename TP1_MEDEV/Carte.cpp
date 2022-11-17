@@ -2,7 +2,7 @@
 
 
 Carte::Carte() {
-	avions = {};
+	vector<Avion*> avions = {};
 	Avion* avion;
 	avion = new AvionAllie(0, 5, 0, 1, 0, 0);
 	avions.push_back(avion);
@@ -17,19 +17,21 @@ Carte::Carte() {
 
 void Carte::tour() {
 
+	vector<int> futurs_deplacement = {}
 	// Choix des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->decisionDeplacement(avions);
+		(avions[i])->decisionDeplacement(this, deplacement);
+		futurs - deplacement.push_back(deplacement);
 	};
 
 	// Application des déplacements
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->applicationDeplacement(avions);
+		(avions[i])->applicationDeplacement(futurs_deplacement[i]);
 	};
 
 	// Tirs
 	for (int i = 0; i < avions.size(); i++) {
-		(avions[i])->tir(avions);
+		(avions[i])->tir(this);
 	}
 
 	// Détection des collisions
@@ -38,8 +40,8 @@ void Carte::tour() {
 		j = i + 1;
 		while (j < avions.size()) {
 			if ((avions[i]->getX() == avions[j]->getX()) && (avions[i]->getY() == avions[j]->getY()) && (avions[i]->getZ() == avions[j]->getZ())) {
-				avions.erase(int(i));
-				avions.erase(j - 1);
+				avions.erase(avions.begin() + i);
+				avions.erase(avions.begin()	+ j - 1);
 				i = i - 2;
 				j = j - 2;
 			}
@@ -51,7 +53,7 @@ void Carte::tour() {
 	int i = 0;
 	while (i<(avions.size())) {
 		if (avions[i]->getIsDead()) {
-			avions.erase(i);
+			avions.erase(avions.begin() + i);
 			i--;
 		}
 		i++;
@@ -71,7 +73,7 @@ void Carte::tour() {
 		}
 		if (!fin) {
 			tours++;
-			jouer();
+			tour();
 		}
 	}
 

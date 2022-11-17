@@ -2,7 +2,6 @@
 #include<vector>
 #include<iostream>
 
-#include"avion.h"
 #include"AvionAllie.h"
 #include"AvionEnnemi.h"
 

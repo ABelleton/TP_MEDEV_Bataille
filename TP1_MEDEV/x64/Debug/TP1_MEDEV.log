@@ -1,0 +1,48 @@
+﻿  Carte.cpp
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(43,19): error C2061: erreur de syntaxe : identificateur 'Carte'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,42): error C2061: erreur de syntaxe : identificateur 'Carte'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,61): error C2059: erreur de syntaxe : ')'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,62): error C2143: erreur de syntaxe : absence de ')' avant '{'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,65): error C2059: erreur de syntaxe : '='
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,68): error C2238: jetons inattendus avant ';'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(45,54): error C2059: erreur de syntaxe : '='
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(45,57): error C2238: jetons inattendus avant ';'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(46,33): error C2059: erreur de syntaxe : '='
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(46,35): error C2238: jetons inattendus avant ';'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\AvionAllie.h(10,27): error C2061: erreur de syntaxe : identificateur 'Carte'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\AvionEnnemi.h(10,38): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\AvionEnnemi.h(10,38): error C2143: erreur de syntaxe : absence de ',' avant '&'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(22,42): error C2660: 'Avion::decisionDeplacement' : la fonction ne prend pas 1 arguments
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(44,22): message : voir la déclaration de 'Avion::decisionDeplacement'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(27,16): error C2039: 'applicationDeplacement' n'est pas membre de 'Avion'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(7): message : voir la déclaration de 'Avion'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(32,26): error C2660: 'Avion::tir' : la fonction ne prend pas 1 arguments
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\avion.h(43,14): message : voir la déclaration de 'Avion::tir'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(38,3): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(39,10): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(40,37): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(40,81): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(40,125): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(41,24): error C2664: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(<expr>)' : impossible de convertir l'argument 1 de 'int' en 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
+          with
+          [
+              _Ty=Avion *
+          ]
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(41,24): message : Aucun constructeur n'a pu prendre le type de source, ou la résolution de la surcharge du constructeur était ambiguë
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1393,37): message : voir la déclaration de 'std::vector<Avion *,std::allocator<Avion *>>::erase'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(42,18): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(44,5): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(44,9): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(46,4): error C2065: 'j' : identificateur non déclaré
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(51,6): error C2374: 'i' : redéfinition ; initialisation multiple
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(36): message : voir la déclaration de 'i'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(54,18): error C2664: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(<expr>)' : impossible de convertir l'argument 1 de 'int' en 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
+          with
+          [
+              _Ty=Avion *
+          ]
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(54,18): message : Aucun constructeur n'a pu prendre le type de source, ou la résolution de la surcharge du constructeur était ambiguë
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1393,37): message : voir la déclaration de 'std::vector<Avion *,std::allocator<Avion *>>::erase'
+C:\Users\Eleve\source\repos\TP_MEDEV_Bataille\TP1_MEDEV\Carte.cpp(74,4): error C3861: 'jouer' : identificateur introuvable
+  TP1_MEDEV.cpp
+  Génération de code en cours...
