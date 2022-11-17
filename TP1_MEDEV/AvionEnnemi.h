@@ -2,7 +2,7 @@
 #include "avion.h"
 #include "Carte.h"
 
-class AvionEnnemi : public Avion
+class AvionEnnemi :public Avion
 {
 public:
 	AvionEnnemi(int x, int y, int z, int xO, int yO, int zO) :Avion(x, y, z, xO, yO, zO) {};
